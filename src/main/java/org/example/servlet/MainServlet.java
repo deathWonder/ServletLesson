@@ -1,9 +1,8 @@
 package org.example.servlet;
 
-
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.example.controller.PostController;
-import org.example.repository.PostRepository;
-import org.example.service.PostService;
+
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,12 +19,12 @@ public class MainServlet extends HttpServlet {
     private static final String PATH = "/api/posts";
 
     final List<String> allowedMethods = List.of(GET, POST, DELETE);
-    private PostController controller;
+    
+    final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("org.example");
+    private final PostController controller = context.getBean(PostController.class);
 
-    @Override
-    public void init() {
-        controller = new PostController(new PostService(new PostRepository()));
-    }
+
+    
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) {

@@ -5,9 +5,9 @@ import org.example.model.Post;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
-import org.springframework.stereotype.Repository;
 
-@Repository
+
+
 public class PostRepository {
 
     AtomicLong generateIndex = new AtomicLong(1);

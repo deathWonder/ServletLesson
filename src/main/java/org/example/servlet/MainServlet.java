@@ -2,7 +2,7 @@ package org.example.servlet;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.example.controller.PostController;
-
+import org.example.config.JavaConfig;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ public class MainServlet extends HttpServlet {
 
     final List<String> allowedMethods = List.of(GET, POST, DELETE);
     
-    final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("org.example");
+    final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
     private final PostController controller = context.getBean(PostController.class);
 
 
